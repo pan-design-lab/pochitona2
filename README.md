@@ -1,0 +1,1613 @@
+[index2.html](https://github.com/user-attachments/files/28084986/index2.html)
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>鰻と薬草 ぽちとな | 福岡・西新の地焼き鰻と薬草茶</title>
+  <meta name="description" content="福岡市早良区西新の鰻と薬草 ぽちとな。宮崎県直送の鰻を備長炭で地焼きし、南九州の天然薬草茶とともにお届けします。西新駅徒歩7分以内、個室あり。">
+  <style>
+    :root {
+      --cream: #f6f1e7;
+      --paper: #fffaf0;
+      --paper2: #eee5d6;
+      --ink: #211b16;
+      --muted: #70655c;
+      --soft: #9b8b7c;
+      --line: rgba(48, 36, 28, .14);
+      --gold: #b88b55;
+      --gold2: #d2a56a;
+      --green: #40593c;
+      --green2: #263827;
+      --brown: #5a3f2d;
+      --red: #8d3727;
+      --charcoal: #15110e;
+      --shadow: 0 22px 70px rgba(27, 19, 13, .18);
+      --serif: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", "Noto Serif JP", serif;
+      --sans: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+      --max: 1180px;
+      --nav: 74px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--charcoal);
+      font-family: var(--sans);
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+    body.menu-open { overflow: hidden; }
+    body::before {
+      content: "";
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 150;
+      width: var(--scroll-progress, 0%);
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--red));
+      box-shadow: 0 0 18px rgba(184,139,85,.45);
+      transition: width .08s linear;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    h1, h2, h3, p { margin: 0; }
+    button, input, textarea, select { font: inherit; }
+
+    .skip {
+      position: absolute;
+      left: 12px;
+      top: -80px;
+      z-index: 9999;
+      padding: 10px 14px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+    }
+    .skip:focus { top: 12px; }
+
+    .site {
+      width: min(100%, 1440px);
+      margin: 0 auto;
+      overflow: clip;
+      background: var(--cream);
+      box-shadow: 0 0 80px rgba(0,0,0,.34);
+    }
+
+    .top-notice {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: center;
+      padding: 8px clamp(18px, 3vw, 44px);
+      color: rgba(255,250,240,.78);
+      background: #0d0a08;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      font-size: 12px;
+      letter-spacing: .05em;
+    }
+    .top-notice strong { color: var(--gold2); font-weight: 700; }
+    .lang-mini {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,250,240,.52);
+      font-family: Georgia, serif;
+      font-style: italic;
+      white-space: nowrap;
+    }
+    .lang-mini a:first-child { color: var(--gold2); }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 0 clamp(18px, 3vw, 44px);
+      background: rgba(246,241,231,.94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(14px);
+      transition: box-shadow .24s ease, background .24s ease;
+    }
+    body.is-scrolled .nav {
+      background: rgba(246,241,231,.98);
+      box-shadow: 0 10px 28px rgba(27,19,13,.1);
+    }
+    .brand {
+      display: grid;
+      gap: 1px;
+      min-width: 178px;
+      font-family: var(--serif);
+      letter-spacing: .14em;
+    }
+    .brand small {
+      color: var(--green);
+      font: 800 10px/1.2 var(--sans);
+      letter-spacing: .2em;
+    }
+    .brand b {
+      color: var(--ink);
+      font-size: 25px;
+      line-height: 1.05;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: clamp(14px, 2vw, 28px);
+      color: #3d332b;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+    .nav-links a { border-bottom: 1px solid transparent; }
+    .nav-links a:hover { color: var(--red); border-color: var(--red); }
+    .nav-cta {
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 18px;
+      color: #fffaf0;
+      background: var(--red);
+      border-radius: 999px;
+      border: 1px solid var(--red);
+      font-weight: 900;
+    }
+    .nav-cta:hover { color: #fffaf0; background: #762d20; }
+    .hamburger {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      margin: 6px auto;
+      background: var(--ink);
+    }
+
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      z-index: 120;
+      display: none;
+      background: rgba(20,15,12,.6);
+    }
+    .mobile-menu.is-open { display: block; }
+    .mobile-panel {
+      margin-left: auto;
+      width: min(340px, 88vw);
+      height: 100%;
+      padding: 28px;
+      background: var(--paper);
+      box-shadow: -20px 0 60px rgba(0,0,0,.24);
+    }
+    .mobile-panel button {
+      float: right;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      background: transparent;
+      cursor: pointer;
+    }
+    .mobile-panel nav {
+      clear: both;
+      display: grid;
+      gap: 0;
+      padding-top: 26px;
+    }
+    .mobile-panel a {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--line);
+      font-family: var(--serif);
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: .1em;
+    }
+
+    .hero {
+      position: relative;
+      min-height: calc(100svh - var(--nav));
+      display: grid;
+      align-items: stretch;
+      color: var(--paper);
+      background: var(--charcoal);
+    }
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+    .hero-media::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(95deg, rgba(14,10,7,.88) 0%, rgba(14,10,7,.64) 46%, rgba(14,10,7,.16) 100%),
+        linear-gradient(0deg, rgba(14,10,7,.52), transparent 42%);
+      z-index: 1;
+    }
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: saturate(.9) contrast(1.04);
+      transform: scale(1.02);
+      animation: heroBreath 18s ease-in-out infinite alternate;
+    }
+    @keyframes heroBreath {
+      from { transform: scale(1.02) translate3d(0,0,0); }
+      to { transform: scale(1.07) translate3d(-1.2%, .8%, 0); }
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: minmax(0, 620px) minmax(300px, 420px);
+      gap: clamp(30px, 5vw, 84px);
+      align-items: center;
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+      padding: clamp(58px, 9vw, 110px) 0 34px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--gold2);
+      font-family: Georgia, serif;
+      font-size: 14px;
+      font-style: italic;
+      letter-spacing: .18em;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 1px;
+      background: currentColor;
+    }
+    h1 {
+      margin-top: 20px;
+      font-family: var(--serif);
+      font-size: clamp(36px, 6vw, 72px);
+      font-weight: 700;
+      letter-spacing: .08em;
+      line-height: 1.35;
+    }
+    .hero-copy {
+      max-width: 520px;
+      margin-top: 24px;
+      color: rgba(255,250,240,.78);
+      font-size: 15px;
+      letter-spacing: .04em;
+      line-height: 2.1;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+    .btn {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 0 22px;
+      border: 1px solid transparent;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: .09em;
+      transition: transform .2s, background .2s, border-color .2s, color .2s;
+      white-space: nowrap;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { color: #fffaf0; background: var(--red); border-color: var(--red); }
+    .btn-primary:hover { background: #742d20; border-color: #742d20; }
+    .btn-gold { color: var(--charcoal); background: var(--gold2); border-color: var(--gold2); }
+    .btn-outline-light { color: var(--paper); background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.46); }
+    .btn-outline { color: var(--ink); background: transparent; border-color: rgba(33,27,22,.42); }
+    .btn-outline:hover { color: var(--paper); background: var(--green2); border-color: var(--green2); }
+
+    .decision-card {
+      align-self: center;
+      padding: 22px;
+      color: var(--ink);
+      background: rgba(255,250,240,.92);
+      border: 1px solid rgba(255,255,255,.5);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+      transform: translateZ(0);
+    }
+    .decision-card h2 {
+      font-family: var(--serif);
+      font-size: 21px;
+      letter-spacing: .08em;
+      line-height: 1.45;
+    }
+    .decision-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+      padding: 0;
+      list-style: none;
+    }
+    .decision-list li {
+      display: grid;
+      grid-template-columns: 86px 1fr;
+      gap: 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--line);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+    .decision-list b {
+      color: var(--green);
+      font-size: 12px;
+      letter-spacing: .08em;
+    }
+    .decision-card .btn { width: 100%; margin-top: 18px; }
+
+    .quick-info {
+      position: relative;
+      z-index: 3;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      width: min(var(--max), calc(100% - 40px));
+      margin: -34px auto 0;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      transform: translateY(0);
+    }
+    .quick-info a,
+    .quick-info div {
+      display: grid;
+      align-content: center;
+      min-height: 82px;
+      padding: 16px 18px;
+      border-right: 1px solid var(--line);
+    }
+    .quick-info > *:last-child { border-right: 0; }
+    .quick-info b {
+      color: var(--green);
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .quick-info span {
+      margin-top: 4px;
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1.5;
+    }
+    .quick-info a {
+      transition: background .22s ease, transform .22s ease;
+    }
+    .quick-info a:hover {
+      background: #fffdf7;
+      transform: translateY(-2px);
+    }
+
+    .section {
+      padding: clamp(76px, 9vw, 118px) clamp(20px, 4vw, 52px);
+    }
+    .inner {
+      width: min(var(--max), 100%);
+      margin: 0 auto;
+    }
+    .section-head {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 38px;
+    }
+    .section-head.center { text-align: center; justify-items: center; }
+    .section-kicker {
+      color: var(--gold);
+      font-family: Georgia, serif;
+      font-style: italic;
+      letter-spacing: .18em;
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(26px, 3.3vw, 42px);
+      font-weight: 700;
+      letter-spacing: .12em;
+      line-height: 1.55;
+    }
+    .section-lead {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 2;
+      letter-spacing: .04em;
+    }
+
+    .first-time {
+      background: var(--cream);
+    }
+    .first-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: clamp(28px, 5vw, 70px);
+      align-items: center;
+    }
+    .photo-stack {
+      display: grid;
+      grid-template-columns: .82fr .6fr;
+      gap: 16px;
+      align-items: center;
+    }
+    .photo-stack img {
+      width: 100%;
+      height: 440px;
+      object-fit: cover;
+      box-shadow: var(--shadow);
+    }
+    .photo-stack img:nth-child(2) {
+      height: 300px;
+      margin-bottom: 0;
+    }
+    .commitments {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 24px;
+    }
+    .commitment {
+      padding: 14px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+    }
+    .commitment b {
+      display: block;
+      color: var(--green);
+      font-family: var(--serif);
+      font-size: 16px;
+      letter-spacing: .08em;
+    }
+    .commitment span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.75;
+    }
+
+    .menu-section {
+      background: #f4efe5;
+    }
+    .menu-section .section-head {
+      margin-bottom: 30px;
+    }
+    .menu-section .section-kicker {
+      color: var(--gold);
+      font-size: 18px;
+    }
+    .menu-subtitle {
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 13px;
+      line-height: 2.1;
+      letter-spacing: .12em;
+    }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .menu-card {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      min-height: 100%;
+      padding: 18px;
+      background: #fffdf8;
+      border: 1px solid rgba(48,36,28,.2);
+      box-shadow: none;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .menu-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+    .menu-card:focus-within {
+      outline: 2px solid var(--gold);
+      outline-offset: 4px;
+    }
+    .menu-card img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+    .menu-body {
+      display: grid;
+      gap: 8px;
+      padding: 18px 0 2px;
+    }
+    .tag {
+      justify-self: start;
+      padding: 0;
+      color: var(--brown);
+      background: transparent;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: .1em;
+    }
+    .menu-body h3 {
+      font-family: var(--serif);
+      font-size: 22px;
+      letter-spacing: .1em;
+    }
+    .menu-body p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.85;
+    }
+    .price {
+      color: var(--red);
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: .06em;
+    }
+    .menu-note {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: center;
+      margin-top: 22px;
+      padding: 18px 20px;
+      background: var(--green2);
+      color: rgba(255,250,240,.78);
+    }
+    .menu-note b {
+      color: var(--paper);
+      font-family: var(--serif);
+      font-size: 18px;
+      letter-spacing: .08em;
+    }
+
+    .detail-section {
+      background: var(--paper);
+    }
+    .detail-section.alt {
+      background: var(--cream);
+    }
+    .detail-layout {
+      display: grid;
+      grid-template-columns: .92fr 1.08fr;
+      gap: clamp(28px, 5vw, 62px);
+      align-items: center;
+    }
+    .detail-photo {
+      min-height: 430px;
+      border: 1px solid var(--line);
+      background: #ddd0bd center/cover;
+      box-shadow: var(--shadow);
+    }
+    .detail-photo.eel {
+      background-image:
+        linear-gradient(rgba(35,25,18,.12), rgba(35,25,18,.12)),
+        url("https://images.unsplash.com/photo-1526318896980-cf78c088247c?w=1000&q=82&auto=format&fit=crop");
+    }
+    .detail-photo.herb {
+      background-image:
+        linear-gradient(rgba(35,25,18,.08), rgba(35,25,18,.08)),
+        url("https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=1000&q=82&auto=format&fit=crop");
+    }
+    .detail-grid {
+      display: grid;
+      gap: 12px;
+      margin-top: 24px;
+    }
+    .detail-card {
+      display: grid;
+      grid-template-columns: 58px 1fr;
+      gap: 16px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      background: #fffdf8;
+    }
+    .detail-card b {
+      color: var(--green);
+      font-family: Georgia, serif;
+      font-size: 22px;
+      font-style: italic;
+      letter-spacing: .12em;
+    }
+    .detail-card h3 {
+      font-family: var(--serif);
+      font-size: 18px;
+      line-height: 1.6;
+      letter-spacing: .08em;
+      margin: 0 0 4px;
+    }
+    .detail-card p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.95;
+      margin: 0;
+    }
+
+    .owner-section {
+      background: var(--paper);
+    }
+    .owner-box {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: clamp(28px, 5vw, 62px);
+      align-items: center;
+    }
+    .owner-photo {
+      min-height: 390px;
+      background:
+        linear-gradient(rgba(35,25,18,.12), rgba(35,25,18,.12)),
+        url("https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=900&q=82&auto=format&fit=crop") center/cover;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .wellness {
+      position: relative;
+      min-height: 430px;
+      display: grid;
+      place-items: center;
+      color: var(--paper);
+      text-align: center;
+      background: var(--charcoal);
+      overflow: hidden;
+    }
+    .wellness img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: .54;
+    }
+    .wellness::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(rgba(18,13,9,.64), rgba(18,13,9,.76));
+    }
+    .wellness-content {
+      position: relative;
+      z-index: 2;
+      width: min(780px, calc(100% - 40px));
+    }
+    .wellness h2 {
+      font-family: var(--serif);
+      font-size: clamp(30px, 4.5vw, 54px);
+      line-height: 1.55;
+      letter-spacing: .12em;
+    }
+    .wellness p {
+      margin: 18px auto 0;
+      max-width: 560px;
+      color: rgba(255,250,240,.74);
+      font-size: 14px;
+      line-height: 2.1;
+    }
+
+    .scenes {
+      background: var(--paper);
+    }
+    .scene-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    .scene {
+      padding: 22px;
+      min-height: 180px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, #fffdf7, #f4ecdd);
+    }
+    .scene b {
+      display: block;
+      color: var(--green);
+      font-family: var(--serif);
+      font-size: 20px;
+      letter-spacing: .08em;
+      line-height: 1.5;
+    }
+    .scene span {
+      display: block;
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .access {
+      background: var(--cream);
+    }
+    .access-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: clamp(28px, 5vw, 64px);
+      align-items: start;
+    }
+    .map-box {
+      min-height: 420px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: #ded4c1;
+      box-shadow: var(--shadow);
+    }
+    .map-box iframe {
+      width: 100%;
+      height: 420px;
+      border: 0;
+      display: block;
+      filter: saturate(.82);
+    }
+    .info-list {
+      display: grid;
+      border-top: 1px solid var(--line);
+    }
+    .info-row {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 18px;
+      padding: 17px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 14px;
+      line-height: 1.85;
+    }
+    .info-row b {
+      color: var(--green);
+      font-family: Georgia, serif;
+      font-size: 13px;
+      font-style: italic;
+      letter-spacing: .16em;
+    }
+    .tel-card {
+      margin-top: 18px;
+      padding: 18px 20px;
+      background: var(--paper);
+      border: 1px solid rgba(184,139,85,.32);
+    }
+    .tel-card small {
+      display: block;
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .14em;
+    }
+    .tel-card a {
+      display: inline-block;
+      margin-top: 4px;
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+
+    .reserve {
+      color: var(--paper);
+      background:
+        linear-gradient(90deg, rgba(255,250,240,.018) 0 1px, transparent 1px 100%),
+        #17120f;
+      background-size: 90px 90px;
+    }
+    .reserve-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: clamp(28px, 5vw, 64px);
+      align-items: start;
+    }
+    .reserve .section-title { color: var(--paper); }
+    .reserve .section-lead { color: rgba(255,250,240,.62); }
+    .reserve-card {
+      display: grid;
+      justify-items: center;
+      gap: 18px;
+      margin-top: 36px;
+      padding: clamp(26px, 4vw, 44px);
+      background: rgba(255,250,240,.035);
+      border: 1px solid rgba(255,255,255,.16);
+    }
+    .reserve-card h3 {
+      font-family: var(--serif);
+      color: rgba(255,250,240,.44);
+      font-size: 19px;
+      font-style: italic;
+      letter-spacing: .14em;
+    }
+    .reserve-card p {
+      color: rgba(255,250,240,.58);
+      font-size: 13px;
+      line-height: 1.9;
+    }
+    .reserve-status {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 22px;
+      color: var(--green);
+      background: #eef7e7;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: .08em;
+    }
+    .reserve-actions {
+      display: grid;
+      width: 100%;
+      gap: 14px;
+      margin-top: 2px;
+    }
+    .reserve-actions .btn {
+      width: 100%;
+      min-height: 60px;
+      font-family: var(--serif);
+      font-size: 16px;
+      letter-spacing: .16em;
+    }
+    .reserve-tel {
+      color: rgba(255,250,240,.38);
+      font-family: Georgia, serif;
+      font-size: 14px;
+      font-style: italic;
+      letter-spacing: .12em;
+    }
+    .form-title {
+      margin-bottom: 18px;
+      color: var(--paper);
+      font-family: var(--serif);
+      font-size: 25px;
+      letter-spacing: .12em;
+    }
+    .form {
+      display: grid;
+      gap: 18px;
+    }
+    .form label {
+      display: grid;
+      gap: 8px;
+      color: rgba(255,250,240,.58);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+    .form input,
+    .form select,
+    .form textarea {
+      width: 100%;
+      min-height: 58px;
+      padding: 14px 18px;
+      color: var(--paper);
+      background: rgba(255,250,240,.075);
+      border: 0;
+      border-bottom: 1px solid rgba(255,255,255,.2);
+      outline: none;
+    }
+    .form textarea { min-height: 126px; resize: vertical; }
+    .form input:focus,
+    .form select:focus,
+    .form textarea:focus { border-bottom-color: var(--gold2); }
+    .form option { color: var(--ink); }
+
+    .faq {
+      background: var(--paper);
+    }
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    details {
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      background: #fffdf7;
+    }
+    summary {
+      cursor: pointer;
+      color: var(--green2);
+      font-weight: 900;
+      letter-spacing: .05em;
+    }
+    details p {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.85;
+    }
+
+    .instagram {
+      background: var(--cream);
+    }
+    .ig-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 8px;
+    }
+    .ig-grid img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+    }
+    .ig-follow { text-align: center; margin-top: 24px; }
+
+    .footer {
+      padding: 58px clamp(20px, 4vw, 52px) 20px;
+      color: rgba(255,250,240,.68);
+      background: #0d0a08;
+    }
+    .footer-inner {
+      width: min(var(--max), 100%);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 38px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .footer-logo {
+      color: var(--paper);
+      font-family: var(--serif);
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: .16em;
+    }
+    .footer p,
+    .footer a {
+      color: rgba(255,250,240,.48);
+      font-size: 13px;
+      line-height: 2;
+    }
+    .footer h3 {
+      margin-bottom: 10px;
+      color: var(--gold2);
+      font-family: Georgia, serif;
+      font-size: 13px;
+      font-style: italic;
+      letter-spacing: .16em;
+    }
+    .copyright {
+      width: min(var(--max), 100%);
+      margin: 0 auto;
+      padding-top: 18px;
+      color: rgba(255,250,240,.26);
+      font: 12px/1.6 Georgia, serif;
+      font-style: italic;
+      letter-spacing: .08em;
+    }
+
+    .sticky-cta {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 90;
+      display: grid;
+      gap: 8px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(12px);
+      transition: opacity .28s ease, transform .28s ease;
+    }
+    .sticky-cta.is-ready {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+    .sticky-cta a {
+      min-width: 156px;
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 18px;
+      color: var(--paper);
+      background: var(--red);
+      box-shadow: 0 10px 30px rgba(60,20,12,.25);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: .08em;
+    }
+    .sticky-cta a:first-child {
+      animation: ctaAttention 4.5s ease-in-out infinite;
+    }
+    @keyframes ctaAttention {
+      0%, 72%, 100% { transform: translateY(0); }
+      78% { transform: translateY(-3px); }
+      84% { transform: translateY(0); }
+      90% { transform: translateY(-2px); }
+    }
+    .mobile-bottom {
+      display: none;
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 92;
+      grid-template-columns: repeat(3, 1fr);
+      background: var(--green2);
+      border-top: 1px solid rgba(255,255,255,.18);
+    }
+    .mobile-bottom a {
+      min-height: 58px;
+      display: grid;
+      place-items: center;
+      color: var(--paper);
+      border-right: 1px solid rgba(255,255,255,.16);
+      font-size: 13px;
+      font-weight: 900;
+    }
+    .mobile-bottom a:first-child { background: var(--red); }
+
+    .fade {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .75s ease, transform .75s ease;
+    }
+    .fade:nth-child(2) { transition-delay: .06s; }
+    .fade:nth-child(3) { transition-delay: .12s; }
+    .fade:nth-child(4) { transition-delay: .18s; }
+    .fade.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (max-width: 980px) {
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+      .hero-inner,
+      .first-grid,
+      .access-grid,
+      .reserve-grid {
+        grid-template-columns: 1fr;
+      }
+      .decision-card { max-width: 520px; }
+      .quick-info { grid-template-columns: repeat(2, 1fr); }
+      .quick-info > * { border-bottom: 1px solid var(--line); }
+      .quick-info > *:nth-child(2n) { border-right: 0; }
+      .quick-info > *:last-child { grid-column: span 2; border-bottom: 0; }
+      .menu-grid { grid-template-columns: 1fr 1fr; }
+      .scene-grid { grid-template-columns: 1fr 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 680px) {
+      :root { --nav: 64px; }
+      .top-notice { grid-template-columns: 1fr; gap: 4px; }
+      .brand b { font-size: 22px; }
+      .hero { min-height: auto; }
+      .hero-inner {
+        width: min(100% - 28px, var(--max));
+        padding: 54px 0 76px;
+      }
+      h1 { font-size: 36px; }
+      .hero-copy { font-size: 13px; }
+      .hero-actions .btn,
+      .reserve-actions .btn { width: 100%; }
+      .decision-list li { grid-template-columns: 76px 1fr; }
+      .quick-info {
+        width: min(100% - 24px, var(--max));
+        margin-top: -34px;
+        grid-template-columns: 1fr;
+      }
+      .quick-info > * {
+        min-height: 70px;
+        border-right: 0;
+      }
+      .quick-info > *:last-child { grid-column: auto; }
+      .section { padding: 64px 18px; }
+      .photo-stack { grid-template-columns: 1fr; }
+      .photo-stack img,
+      .photo-stack img:nth-child(2) {
+        height: auto;
+        aspect-ratio: 4 / 3;
+        margin: 0;
+      }
+      .commitments,
+      .menu-grid,
+      .scene-grid,
+      .faq-grid,
+      .ig-grid,
+      .footer-inner,
+      .reserve-actions {
+        grid-template-columns: 1fr;
+      }
+      .owner-box,
+      .detail-layout { grid-template-columns: 1fr; }
+      .detail-photo { min-height: 320px; }
+      .menu-note { grid-template-columns: 1fr; }
+      .ig-grid { grid-template-columns: repeat(3, 1fr); }
+      .info-row { grid-template-columns: 82px 1fr; gap: 12px; }
+      .map-box,
+      .map-box iframe { min-height: 320px; height: 320px; }
+      .sticky-cta { display: none; }
+      .mobile-bottom { display: grid; }
+      .mobile-bottom a:first-child {
+        animation: ctaAttention 4.5s ease-in-out infinite;
+      }
+      body { padding-bottom: 58px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .001ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">本文へ移動</a>
+
+  <div class="site">
+    <div class="top-notice">
+      <div><strong>2026年7月1日 公開想定</strong> / 西新駅徒歩7分以内 / 16席・個室あり / 電話 092-600-1969</div>
+      <div class="lang-mini" aria-label="Language">
+        <a href="#">JA</a><span>/</span><a href="#english">EN</a><span>/</span><a href="#korean">KO</a><span>/</span><a href="#chinese">ZH</a>
+      </div>
+    </div>
+
+    <header class="nav" aria-label="ヘッダー">
+      <a class="brand" href="#top" aria-label="鰻と薬草 ぽちとな">
+        <small>鰻と薬草</small>
+        <b>ぽちとな</b>
+      </a>
+      <nav class="nav-links" aria-label="主要ナビゲーション">
+        <a href="#first">初めての方へ</a>
+        <a href="#menu">お品書き</a>
+        <a href="#scene">利用シーン</a>
+        <a href="#access">アクセス</a>
+        <a href="#faq">FAQ</a>
+        <a class="nav-cta" href="#reserve">ご予約</a>
+      </nav>
+      <button class="hamburger" id="menuButton" aria-label="メニューを開く" aria-controls="mobileMenu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <div class="mobile-panel">
+        <button id="closeMenu" aria-label="メニューを閉じる">×</button>
+        <nav>
+          <a href="#first">初めての方へ</a>
+          <a href="#menu">お品書き</a>
+          <a href="#scene">利用シーン</a>
+          <a href="#access">アクセス</a>
+          <a href="#reserve">ご予約</a>
+          <a href="#english">English / Korean / Chinese</a>
+        </nav>
+      </div>
+    </div>
+
+    <main id="main">
+      <section class="hero" id="top">
+        <div class="hero-media" aria-hidden="true">
+          <img src="https://images.unsplash.com/photo-1617196034183-421b4040ed20?w=2000&q=82&auto=format&fit=crop" alt="">
+        </div>
+        <div class="hero-inner">
+          <div>
+            <p class="eyebrow fade">Charcoal grilled eel and medicinal herb tea</p>
+            <h1 class="fade">忙しい毎日に、<br>少し整う食事を。</h1>
+            <p class="hero-copy fade">
+              ご褒美の日だけでなく、元気が出ない日にも来たくなる鰻屋へ。
+              宮崎県直送の鰻を備長炭で地焼きし、南九州の天然薬草茶とともにお届けします。
+            </p>
+            <div class="hero-actions fade">
+              <a class="btn btn-primary" href="#reserve">席を予約する</a>
+              <a class="btn btn-gold" href="#menu">メニューと価格を見る</a>
+              <a class="btn btn-outline-light" href="tel:0926001969">電話する</a>
+            </div>
+          </div>
+
+          <aside class="decision-card fade" aria-label="来店判断に必要な情報">
+            <h2>初めてでも迷わない、来店前の確認。</h2>
+            <ul class="decision-list">
+              <li><b>価格</b><span>鰻重 松5,000円 / 竹4,500円 / 梅3,600円、薬草茶800円</span></li>
+              <li><b>場所</b><span>福岡市早良区城西3-2-7。西新駅徒歩7分以内</span></li>
+              <li><b>席</b><span>16席。個室あり、最大6名でゆったり利用可能</span></li>
+              <li><b>予約</b><span>TableCheck導線、電話、問い合わせを同じ場所に集約</span></li>
+            </ul>
+            <a class="btn btn-primary" href="#reserve">空席確認へ進む</a>
+          </aside>
+        </div>
+      </section>
+
+      <section class="quick-info" aria-label="重要情報">
+        <a href="#menu"><b>Menu</b><span>鰻重 3,600円から</span></a>
+        <a href="#access"><b>Access</b><span>西新駅 徒歩7分以内</span></a>
+        <a href="#reserve"><b>Seat</b><span>16席 / 個室6名</span></a>
+        <a href="#access"><b>Hours</b><span>11:00-22:00 / 水曜予定</span></a>
+        <a href="#english"><b>Language</b><span>日本語 / English / 한국어 / 中文</span></a>
+      </section>
+
+      <section class="section first-time" id="first">
+        <div class="inner first-grid">
+          <div class="photo-stack fade">
+            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=900&q=82&auto=format&fit=crop" alt="落ち着いた店内のイメージ">
+            <img src="https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=700&q=82&auto=format&fit=crop" alt="薬草茶のイメージ">
+          </div>
+          <div class="fade">
+            <div class="section-head">
+              <p class="section-kicker">First visit</p>
+              <h2 class="section-title">鰻と薬草茶で、<br>日々の暮らしに寄り添う養生を。</h2>
+              <p class="section-lead">
+                宮崎県で鰻屋と天然鰻漁師の師匠から手ほどきを受けた地焼き。
+                宮崎県の養鰻場より直送する鰻を、備長炭の火で香ばしく焼き上げます。
+                宮内庁御用達の醤油、本みりん、有機栽培サトウキビ、醸造アルコール不使用の料理酒を使ったタレで、体にやさしい満足感を。
+              </p>
+            </div>
+            <div class="commitments">
+              <div class="commitment"><b>宮崎県直送</b><span>養鰻場より届く鰻を使用</span></div>
+              <div class="commitment"><b>備長炭地焼き</b><span>香ばしさと旨みを引き出す火入れ</span></div>
+              <div class="commitment"><b>薬草茶</b><span>南九州の天然薬草を中心に構成</span></div>
+              <div class="commitment"><b>素材の安心感</b><span>宮内庁御用達の醤油など厳選素材</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section menu-section" id="menu">
+        <div class="inner">
+          <div class="section-head center fade">
+            <p class="section-kicker">Our Menu</p>
+            <h2 class="section-title">お品書き</h2>
+            <p class="menu-subtitle">うなぎと薬草茶<br>それぞれの出会い</p>
+          </div>
+          <div class="menu-grid">
+            <article class="menu-card fade">
+              <img src="https://images.unsplash.com/photo-1617196034183-421b4040ed20?w=900&q=82&auto=format&fit=crop" alt="うな重 松のイメージ">
+              <div class="menu-body">
+                <span class="tag">01</span>
+                <h3>特上うな丼</h3>
+                <p>外は香ばしく、中はふっくら。厳選うなぎを使用した最高の一杯。</p>
+                <div class="price">松 5,000円</div>
+              </div>
+            </article>
+            <article class="menu-card fade">
+              <img src="https://images.unsplash.com/photo-1526318896980-cf78c088247c?w=900&q=82&auto=format&fit=crop" alt="炭火料理のイメージ">
+              <div class="menu-body">
+                <span class="tag">02</span>
+                <h3>特上うな重</h3>
+                <p>濃いめのタレを最大限に引き出した一皿。ゆったり味わいたい方へ。</p>
+                <div class="price">竹 4,500円</div>
+              </div>
+            </article>
+            <article class="menu-card fade">
+              <img src="https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=900&q=82&auto=format&fit=crop" alt="薬草茶のイメージ">
+              <div class="menu-body">
+                <span class="tag">03</span>
+                <h3>漢方医監修 薬草茶</h3>
+                <p>体調や体質に合わせて選ぶ一杯。食後の整えに。</p>
+                <div class="price">800円</div>
+              </div>
+            </article>
+          </div>
+          <div class="menu-note fade">
+            <div><b>梅 3,600円も掲載想定</b><br>初めての方が価格で迷わないよう、主要メニューと価格を上部に明記します。</div>
+            <a class="btn btn-gold" href="#reserve">メニューを見て予約する</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="wellness">
+        <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=1800&q=82&auto=format&fit=crop" alt="">
+        <div class="wellness-content fade">
+          <h2>食べることは、<br>整えること。</h2>
+          <p>季節に合わせて、少しずつ体をいたわる。鰻の力強さと、薬草茶のやさしさを一つの体験として伝えます。</p>
+        </div>
+      </section>
+
+      <section class="section scenes" id="scene">
+        <div class="inner">
+          <div class="section-head center fade">
+            <p class="section-kicker">Scene</p>
+            <h2 class="section-title">利用シーンを明確にして、予約判断を早くする。</h2>
+            <p class="section-lead">「自分が行ってよい店か」を迷わせないため、ターゲット別の入口を用意します。</p>
+          </div>
+          <div class="scene-grid">
+            <div class="scene fade"><b>ランチ利用</b><span>西新周辺の方が、仕事や用事の合間に来店しやすい導線。</span></div>
+            <div class="scene fade"><b>接待・会食</b><span>個室、落ち着いた雰囲気、価格帯を明示して安心感を作る。</span></div>
+            <div class="scene fade"><b>記念日</b><span>特別感のある写真と予約導線で、事前予約につなげる。</span></div>
+            <div class="scene fade"><b>海外観光客</b><span>英語・韓国語・中国語の入口を上部に置き、迷わずアクセス情報へ。</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section owner-section" id="owner">
+        <div class="inner owner-box">
+          <div class="owner-photo fade" aria-label="店主の想いを伝える写真枠"></div>
+          <div class="fade">
+            <div class="section-head">
+              <p class="section-kicker">Owner's Thought</p>
+              <h2 class="section-title">店主の想い</h2>
+              <p class="section-lead">
+                宮崎で鰻屋と天然鰻漁師の師匠から手ほどきを受けた地焼き。
+                その経験を、福岡・西新で「日々を整える食事」として届けます。
+                長すぎる文章にせず、人柄と安心感が伝わる短い導入にします。
+              </p>
+            </div>
+            <a class="btn btn-outline" href="#reserve">想いを読んで予約する</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section detail-section" id="eel-commitment">
+        <div class="inner detail-layout">
+          <div class="detail-photo eel fade" aria-label="うなぎと炭火へのこだわり写真枠"></div>
+          <div class="fade">
+            <div class="section-head">
+              <p class="section-kicker">Eel / Charcoal</p>
+              <h2 class="section-title">火と香りを味わう</h2>
+              <p class="section-lead">
+                宮崎県直送の鰻を、備長炭の火で香ばしく地焼きに。
+                素材、火入れ、タレの余韻まで、来店前に価値が伝わるよう短く整理します。
+              </p>
+            </div>
+            <div class="detail-grid">
+              <article class="detail-card"><b>01</b><div><h3>宮崎県直送の鰻</h3><p>養鰻場から届く鰻を使用し、産地の安心感を伝えます。</p></div></article>
+              <article class="detail-card"><b>02</b><div><h3>備長炭の地焼き</h3><p>炭火の香りをまとわせ、外は香ばしく中はふっくら仕上げます。</p></div></article>
+              <article class="detail-card"><b>03</b><div><h3>素材を生かすタレ</h3><p>宮内庁御用達の醤油、本みりん、有機栽培サトウキビなどを使用します。</p></div></article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section detail-section alt" id="herb-commitment">
+        <div class="inner detail-layout">
+          <div class="fade">
+            <div class="section-head">
+              <p class="section-kicker">Medicinal Herb Tea</p>
+              <h2 class="section-title">食後を整える一杯</h2>
+              <p class="section-lead">
+                鰻の満足感のあとに、体をいたわる薬草茶を。
+                ぽちとならしい「食べることは、整えること。」の体験を伝えるセクションです。
+              </p>
+            </div>
+            <div class="detail-grid">
+              <article class="detail-card"><b>01</b><div><h3>南九州の天然薬草</h3><p>地域性と自然の恵みが伝わる素材選びを見せます。</p></div></article>
+              <article class="detail-card"><b>02</b><div><h3>食後に整える一杯</h3><p>鰻を味わった後の余韻として、薬草茶の役割を分かりやすく伝えます。</p></div></article>
+              <article class="detail-card"><b>03</b><div><h3>海外にも伝わる体験</h3><p>英語では Medicinal Herb Tea として、多言語でも違和感なく説明します。</p></div></article>
+            </div>
+          </div>
+          <div class="detail-photo herb fade" aria-label="薬草茶へのこだわり写真枠"></div>
+        </div>
+      </section>
+
+      <section class="section access" id="access">
+        <div class="inner access-grid">
+          <div class="fade">
+            <div class="section-head">
+              <p class="section-kicker">Access</p>
+              <h2 class="section-title">アクセス</h2>
+              <p class="section-lead">来店直前の離脱を防ぐため、地図・住所・駅徒歩・駐車場割引を同じ画面で確認できる構成にします。</p>
+            </div>
+            <div class="map-box">
+              <iframe src="https://maps.google.com/maps?q=福岡市早良区城西3-2-7 MODERN ASPIRATION 西新クアルト 101&z=16&output=embed" title="鰻と薬草 ぽちとな 地図" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+          <div class="fade">
+            <div class="info-list">
+              <div class="info-row"><b>Address</b><span>〒814-0003<br>福岡市早良区城西3-2-7<br>MODERN ASPIRATION 西新クアルト 101</span></div>
+              <div class="info-row"><b>Station</b><span>地下鉄空港線 西新駅 徒歩7分以内<br>駐車場割引あり</span></div>
+              <div class="info-row"><b>Hours</b><span>ランチ 11:00-15:00<br>カフェ 15:00-17:00<br>ディナー 17:00-22:00（L.O.21:00）</span></div>
+              <div class="info-row"><b>Closed</b><span>水曜日予定</span></div>
+              <div class="info-row"><b>Seat</b><span>16席 / 個室あり（ゆったり6名）</span></div>
+            </div>
+            <div class="tel-card">
+              <small>ご予約・お問い合わせ</small>
+              <a href="tel:0926001969">092-600-1969</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section reserve" id="reserve">
+        <div class="inner reserve-grid">
+          <div class="fade">
+            <div class="section-head">
+              <p class="section-kicker">Reservation</p>
+              <h2 class="section-title">ご予約・お問い合わせ</h2>
+              <p class="section-lead">
+                オンライン予約はTableCheckより承っています。<br>
+                お電話・お問い合わせフォームもお気軽にどうぞ。
+                <br><br>
+                完全予約制 / 16席 / 個室あり（6名まで）
+              </p>
+            </div>
+            <div class="reserve-card">
+              <h3>TableCheck オンライン予約</h3>
+              <span class="reserve-status">✓ 本日 残り空席あり</span>
+              <div class="reserve-actions">
+                <a class="btn btn-gold" href="https://www.tablecheck.com/" target="_blank" rel="noopener">席を予約する　→</a>
+              </div>
+              <a class="reserve-tel" href="tel:0926001969">電話予約：092-600-1969</a>
+            </div>
+          </div>
+          <div class="fade">
+            <h3 class="form-title">お問い合わせフォーム</h3>
+            <form class="form" id="contactForm">
+              <label>お名前 *
+                <input type="text" name="name" placeholder="山田 太郎" required>
+              </label>
+              <label>メールアドレス *
+                <input type="email" name="email" placeholder="example@email.com" required>
+              </label>
+              <label>件名 *
+                <select name="subject" required>
+                  <option value="">選択してください</option>
+                  <option>予約について</option>
+                  <option>個室・会食について</option>
+                  <option>メニューについて</option>
+                  <option>その他</option>
+                </select>
+              </label>
+              <label>メッセージ *
+                <textarea name="message" placeholder="ご用件をご記入ください。" required></textarea>
+              </label>
+              <button class="btn btn-outline-light" type="submit">送信する　→</button>
+              <p id="formMessage" style="color:rgba(255,250,240,.58);font-size:12px;"></p>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section class="section faq" id="faq">
+        <div class="inner">
+          <div class="section-head center fade">
+            <p class="section-kicker">FAQ</p>
+            <h2 class="section-title">予約前の不安を減らすFAQ</h2>
+          </div>
+          <div class="faq-grid">
+            <details class="fade" open>
+              <summary>個室はありますか？</summary>
+              <p>個室があります。最大6名までゆったりご利用いただける想定です。接待や記念日利用の予約導線へつなげます。</p>
+            </details>
+            <details class="fade">
+              <summary>海外のお客様も利用しやすいですか？</summary>
+              <p>日本語・英語を初期対応とし、韓国語・中国語も追加しやすい設計です。アクセスやメニュー価格は多言語でも見やすく整理します。</p>
+            </details>
+            <details class="fade">
+              <summary>駐車場はありますか？</summary>
+              <p>駐車場割引ありの情報をアクセス欄に明記します。詳細が確定したら、対象駐車場名も掲載します。</p>
+            </details>
+            <details class="fade">
+              <summary>写真はどう差し替えますか？</summary>
+              <p>現在は仮写真です。実際の鰻重、炭火、薬草茶、店内、個室、外観を撮影後に差し替える前提です。</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="section instagram">
+        <div class="inner">
+          <div class="section-head center fade">
+            <p class="section-kicker">Instagram</p>
+            <h2 class="section-title">@pochitona2026</h2>
+            <p class="section-lead">開店前の期待づくり、料理写真、薬草茶、店内の雰囲気を継続的に見せることで、HPからSNS、SNSから予約へ回遊させます。</p>
+          </div>
+          <div class="ig-grid fade">
+            <img src="https://images.unsplash.com/photo-1617196034183-421b4040ed20?w=500&q=74&auto=format&fit=crop" alt="Instagram投稿イメージ1">
+            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=500&q=74&auto=format&fit=crop" alt="Instagram投稿イメージ2">
+            <img src="https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=500&q=74&auto=format&fit=crop" alt="Instagram投稿イメージ3">
+            <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=500&q=74&auto=format&fit=crop" alt="Instagram投稿イメージ4">
+            <img src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=500&q=74&auto=format&fit=crop" alt="Instagram投稿イメージ5">
+            <img src="https://images.unsplash.com/photo-1526318896980-cf78c088247c?w=500&q=74&auto=format&fit=crop" alt="Instagram投稿イメージ6">
+          </div>
+          <div class="ig-follow fade">
+            <a class="btn btn-outline" href="https://www.instagram.com/pochitona2026/" target="_blank" rel="noopener">Instagramを見る</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="english" style="background:#f1e8d8;">
+        <div class="inner">
+          <div class="section-head center fade">
+            <p class="section-kicker">Multilingual guidance</p>
+            <h2 class="section-title">多言語対応の見せ方</h2>
+            <p class="section-lead">
+              外国人観光客向けには、長い説明よりも「価格・場所・営業時間・予約方法」を先に提示します。
+              英語ページを初期公開、韓国語・中国語は同じ構成で追加できる設計にします。
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-logo">ぽちとな</div>
+          <p style="margin-top:10px;">元気が出ない日も、ご褒美の日も。福岡・西新で、鰻と薬草茶の整う時間を。</p>
+        </div>
+        <div>
+          <h3>Navigation</h3>
+          <a href="#first">初めての方へ</a><br>
+          <a href="#menu">お品書き</a><br>
+          <a href="#access">アクセス</a><br>
+          <a href="#reserve">ご予約</a>
+        </div>
+        <div>
+          <h3>Information</h3>
+          <p>福岡市早良区城西3-2-7<br>西新駅徒歩7分以内<br>092-600-1969</p>
+        </div>
+        <div>
+          <h3>Language</h3>
+          <a href="#">日本語</a><br>
+          <a href="#english">English</a><br>
+          <a href="#korean">한국어</a><br>
+          <a href="#chinese">中文</a>
+        </div>
+      </div>
+      <p class="copyright">© 2026 鰻と薬草 ぽちとな / Unagi & Yakusocha POCHITONA</p>
+    </footer>
+  </div>
+
+  <div class="sticky-cta" aria-label="固定予約導線">
+    <a href="#reserve">ご予約</a>
+    <a href="tel:0926001969" style="background:var(--green2);">電話</a>
+  </div>
+  <nav class="mobile-bottom" aria-label="スマートフォン固定導線">
+    <a href="#reserve">予約</a>
+    <a href="tel:0926001969">電話</a>
+    <a href="#access">地図</a>
+  </nav>
+
+  <script>
+    const menuButton = document.getElementById('menuButton');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeMenu = document.getElementById('closeMenu');
+    const toggleMenu = (open) => {
+      mobileMenu.classList.toggle('is-open', open);
+      document.body.classList.toggle('menu-open', open);
+      menuButton.setAttribute('aria-expanded', String(open));
+      mobileMenu.setAttribute('aria-hidden', String(!open));
+    };
+    menuButton.addEventListener('click', () => toggleMenu(true));
+    closeMenu.addEventListener('click', () => toggleMenu(false));
+    mobileMenu.addEventListener('click', (event) => {
+      if (event.target === mobileMenu || event.target.tagName === 'A') toggleMenu(false);
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add('is-visible');
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade').forEach((el) => observer.observe(el));
+
+    document.getElementById('contactForm').addEventListener('submit', (event) => {
+      event.preventDefault();
+      document.getElementById('formMessage').textContent = '送信フォームはデザイン確認用です。実装時にGoogleフォームまたはメール送信機能へ接続します。';
+    });
+
+    const stickyCta = document.querySelector('.sticky-cta');
+    const updateScrollState = () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = maxScroll > 0 ? Math.min(100, Math.max(0, (scrollTop / maxScroll) * 100)) : 0;
+      document.body.style.setProperty('--scroll-progress', `${progress}%`);
+      document.body.classList.toggle('is-scrolled', scrollTop > 8);
+      stickyCta.classList.toggle('is-ready', scrollTop > window.innerHeight * .45);
+    };
+    updateScrollState();
+    window.addEventListener('scroll', updateScrollState, { passive: true });
+  </script>
+</body>
+</html>
